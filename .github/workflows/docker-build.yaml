@@ -4,7 +4,6 @@ on: [push]
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
-    environment: DOCKER_USER
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,5 +20,5 @@ jobs:
       - name: Push Docker image
         run: docker push my-image
         env:
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_USER: alexis341
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

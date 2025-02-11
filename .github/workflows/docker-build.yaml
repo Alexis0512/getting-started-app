@@ -12,11 +12,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Get latest tag
         id: get_version
         run: |
-          latest_tag=$(git tag --sort=-v:refname | head -n 1)
+          git fetch --tags  # Assure-toi d'avoir les tags les plus récents
+          latest_tag=$(git tag --sort=-v:refname | tail -n 1)
           if [[ -z "$latest_tag" ]]; then
             new_version="1.0.0"
           else
@@ -26,6 +26,8 @@ jobs:
             new_version="$major.$minor.$((patch+1))"
           fi
           echo "new_version=$new_version" >> $GITHUB_ENV
+          echo "New Version: $new_version"
+
 
       - name: Create new tag
         run: |

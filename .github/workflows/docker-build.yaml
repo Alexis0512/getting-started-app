@@ -24,5 +24,5 @@ jobs:
           context: .
           push: true
           tags: |
-            thomctrs/my-app-getting:latest
-            thomctrs/my-app-getting:${{ github.sha }}
+            alexis341/my-app-getting:latest
+            alexis341/my-app-getting:${{ github.sha }}

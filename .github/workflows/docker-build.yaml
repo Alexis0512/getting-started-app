@@ -20,5 +20,5 @@ jobs:
       - name: Push Docker image
         run: docker push my-image
         env:
-          DOCKER_USER: alexis341
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

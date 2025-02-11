@@ -4,6 +4,7 @@ on: [push]
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
+    environment: DOCKER_USER
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

@@ -1,7 +1,24 @@
 name: build-docker
 on: [push]
+
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
     steps:
-      - run: ls
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: List files
+        run: ls
+
+      - name: Build Docker image
+        run: docker build -t my-image .
+
+      - name: List Docker images
+        run: docker images
+
+      - name: Push Docker image
+        run: docker push my-image
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
